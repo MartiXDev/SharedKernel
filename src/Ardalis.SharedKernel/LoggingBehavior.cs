@@ -24,25 +24,24 @@ public class LoggingBehavior<TRequest, TResponse>(ILogger<LoggingBehavior<TReque
       CancellationToken cancellationToken)
   {
     Guard.Against.Null(request);
+    
     if (_logger.IsEnabled(LogLevel.Information))
     {
-      _logger.LogInformation("Handling {RequestName}", typeof(TRequest).Name);
-
-      Type myType = request.GetType();
-      IList<PropertyInfo> props = new List<PropertyInfo>(myType.GetProperties());
-      foreach (PropertyInfo prop in props)
-      {
-        object? propValue = prop?.GetValue(request, null);
-        _logger.LogInformation("Property {Property} : {@Value}", prop?.Name, propValue);
-      }
+      _logger.LogInformation("Handling {RequestName} with {@Request}", typeof(TRequest).Name, request);
     }
 
     var sw = Stopwatch.StartNew();
 
     var response = await next(request, cancellationToken);
 
-    _logger.LogInformation("Handled {RequestName} with {Response} in {ms} ms", typeof(TRequest).Name, response, sw.ElapsedMilliseconds);
     sw.Stop();
+    
+    if (_logger.IsEnabled(LogLevel.Information))
+    {
+      _logger.LogInformation("Handled {RequestName} with {Response} in {ElapsedMilliseconds} ms", 
+        typeof(TRequest).Name, response, sw.ElapsedMilliseconds);
+    }
+    
     return response;
   }
 }
