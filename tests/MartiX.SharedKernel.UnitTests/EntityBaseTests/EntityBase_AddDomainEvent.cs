@@ -2,12 +2,24 @@
 
 namespace MartiX.SharedKernel.UnitTests.EntityBaseTests;
 
+/// <summary>
+/// Tests adding domain events to entities.
+/// </summary>
 public class EntityBase_AddDomainEvent : INotificationHandler<EntityBase_AddDomainEvent.TestDomainEvent>
 {
+  /// <summary>
+  /// Test domain event.
+  /// </summary>
   public class TestDomainEvent : DomainEventBase { }
 
-  private class TestEntity : EntityBase
+  /// <summary>
+  /// Test entity that raises a domain event.
+  /// </summary>
+  private sealed class TestEntity : EntityBase
   {
+    /// <summary>
+    /// Adds a test domain event.
+    /// </summary>
     public void AddTestDomainEvent()
     {
       var domainEvent = new TestDomainEvent();
@@ -15,6 +27,9 @@ public class EntityBase_AddDomainEvent : INotificationHandler<EntityBase_AddDoma
     }
   }
 
+  /// <summary>
+  /// Verifies that a domain event is added to the entity.
+  /// </summary>
   [Fact]
   public void AddsDomainEventToEntity()
   {
@@ -29,7 +44,13 @@ public class EntityBase_AddDomainEvent : INotificationHandler<EntityBase_AddDoma
     entity.DomainEvents.Should().AllBeOfType<TestDomainEvent>();
   }
 
-  public ValueTask Handle(EntityBase_AddDomainEvent.TestDomainEvent notification, CancellationToken cancellationToken)
+  /// <summary>
+  /// Handles the test domain event.
+  /// </summary>
+  /// <param name="notification">The event to handle.</param>
+  /// <param name="cancellationToken">The cancellation token.</param>
+  /// <returns>A task representing the handler.</returns>
+  public ValueTask Handle(TestDomainEvent notification, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();
   }

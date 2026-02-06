@@ -1,33 +1,60 @@
 ﻿using Mediator;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
-using Xunit;
 
-namespace MartiX.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
+namespace MartiX.SharedKernel.UnitTests.MediatorDomainEventDispatcherTests;
 
+/// <summary>
+/// Tests dispatching and clearing domain events with mixed identifier types.
+/// </summary>
 public class DispatchAndClearEventsWithMixedIds : IDomainEventHandler<DispatchAndClearEventsWithMixedIds.TestDomainEvent>
 {
-  public class TestDomainEvent : DomainEventBase { }
-  public readonly record struct StronglyTyped { }
+  /// <summary>
+  /// Test domain event.
+  /// </summary>
+  public class TestDomainEvent : DomainEventBase;
 
-  private class TestEntity : EntityBase
+  /// <summary>
+  /// Test strongly typed identifier.
+  /// </summary>
+  public readonly record struct StronglyTyped;
+
+  /// <summary>
+  /// Test entity with int identifier.
+  /// </summary>
+  private sealed class TestEntity : EntityBase
   {
+    /// <summary>
+    /// Adds a test domain event.
+    /// </summary>
     public void AddTestDomainEvent()
     {
       TestDomainEvent domainEvent = new();
       RegisterDomainEvent(domainEvent);
     }
   }
-  private class TestEntityGuid : EntityBase<Guid>
+  /// <summary>
+  /// Test entity with Guid identifier.
+  /// </summary>
+  private sealed class TestEntityGuid : EntityBase<Guid>
   {
+    /// <summary>
+    /// Adds a test domain event.
+    /// </summary>
     public void AddTestDomainEvent()
     {
       TestDomainEvent domainEvent = new();
       RegisterDomainEvent(domainEvent);
     }
   }
-  private class TestEntityStronglyTyped : EntityBase<StronglyTyped>
+  /// <summary>
+  /// Test entity with strongly typed identifier.
+  /// </summary>
+  private sealed class TestEntityStronglyTyped : EntityBase<StronglyTyped>
   {
+    /// <summary>
+    /// Adds a test domain event.
+    /// </summary>
     public void AddTestDomainEvent()
     {
       TestDomainEvent domainEvent = new();
@@ -35,6 +62,9 @@ public class DispatchAndClearEventsWithMixedIds : IDomainEventHandler<DispatchAn
     }
   }
 
+  /// <summary>
+  /// Verifies that domain events are dispatched and cleared for mixed identifier types.
+  /// </summary>
   [Fact]
   public async Task CallsPublishAndClearDomainEventsWithStronglyTypedId()
   {
@@ -58,6 +88,12 @@ public class DispatchAndClearEventsWithMixedIds : IDomainEventHandler<DispatchAn
     entityStronglyTyped.DomainEvents.Should().BeEmpty();
   }
 
+  /// <summary>
+  /// Handles the test domain event.
+  /// </summary>
+  /// <param name="notification">The event to handle.</param>
+  /// <param name="cancellationToken">The cancellation token.</param>
+  /// <returns>A task representing the handler.</returns>
   public ValueTask Handle(TestDomainEvent notification, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();

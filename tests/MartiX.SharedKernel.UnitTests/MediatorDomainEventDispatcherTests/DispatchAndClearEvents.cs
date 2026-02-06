@@ -4,11 +4,24 @@ using Moq;
 
 namespace MartiX.SharedKernel.UnitTests.MediatorDomainEventDispatcherTests;
 
+/// <summary>
+/// Tests dispatching and clearing domain events with int identifiers.
+/// </summary>
 public class DispatchAndClearEvents : IDomainEventHandler<DispatchAndClearEvents.TestDomainEvent>
 {
-  public class TestDomainEvent : DomainEventBase { }
-  private class TestEntity : EntityBase
+  /// <summary>
+  /// Test domain event.
+  /// </summary>
+  public class TestDomainEvent : DomainEventBase;
+
+  /// <summary>
+  /// Test entity that raises a domain event.
+  /// </summary>
+  private sealed class TestEntity : EntityBase
   {
+    /// <summary>
+    /// Adds a test domain event.
+    /// </summary>
     public void AddTestDomainEvent()
     {
       var domainEvent = new TestDomainEvent();
@@ -16,6 +29,9 @@ public class DispatchAndClearEvents : IDomainEventHandler<DispatchAndClearEvents
     }
   }
 
+  /// <summary>
+  /// Verifies that domain events are dispatched and cleared.
+  /// </summary>
   [Fact]
   public async Task CallsPublishAndClearDomainEvents()
   {
@@ -33,6 +49,12 @@ public class DispatchAndClearEvents : IDomainEventHandler<DispatchAndClearEvents
     entity.DomainEvents.Should().BeEmpty();
   }
 
+  /// <summary>
+  /// Handles the test domain event.
+  /// </summary>
+  /// <param name="notification">The event to handle.</param>
+  /// <param name="cancellationToken">The cancellation token.</param>
+  /// <returns>A task representing the handler.</returns>
   public ValueTask Handle(TestDomainEvent notification, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();

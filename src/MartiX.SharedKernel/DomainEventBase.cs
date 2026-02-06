@@ -6,5 +6,9 @@
 /// </summary>
 public abstract class DomainEventBase : IDomainEvent
 {
+  /// <summary>
+  /// Gets the UTC timestamp when the event occurred.
+  /// </summary>
+  /// <returns>The event occurrence time.</returns>
   public DateTime DateOccurred { get; protected set; } = DateTime.UtcNow;
 }

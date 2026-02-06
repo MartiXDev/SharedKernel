@@ -1,8 +1,14 @@
 ﻿namespace MartiX.SharedKernel.UnitTests.ValueObjectTests;
 
+/// <summary>
+/// Tests value object equality behavior.
+/// </summary>
 public class ValueObject_ValueEquality
 {
 
+  /// <summary>
+  /// Verifies that value objects with the same values are equal.
+  /// </summary>
   [Fact]
   public void WithSameValuesAreEqual()
   {
@@ -14,6 +20,9 @@ public class ValueObject_ValueEquality
     valueObject1.Should().Be(valueObject2);
   }
 
+  /// <summary>
+  /// Verifies that value objects with different values are not equal.
+  /// </summary>
   [Fact]
   public void WithDifferentValuesAreNotEqual()
   {
