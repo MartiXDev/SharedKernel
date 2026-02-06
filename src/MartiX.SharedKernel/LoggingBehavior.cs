@@ -1,10 +1,10 @@
 ﻿using System.Diagnostics;
 using System.Reflection;
-using Ardalis.GuardClauses;
+using MartiX.GuardClauses;
 using Mediator;
 using Microsoft.Extensions.Logging;
 
-namespace Ardalis.SharedKernel;
+namespace MartiX.SharedKernel;
 
 /// <summary>
 /// Adds logging for all requests in Mediator pipeline.

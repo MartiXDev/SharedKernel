@@ -1,6 +1,6 @@
 ﻿using Mediator;
 
-namespace Ardalis.SharedKernel;
+namespace MartiX.SharedKernel;
 
 public interface IDomainEvent : INotification
 {

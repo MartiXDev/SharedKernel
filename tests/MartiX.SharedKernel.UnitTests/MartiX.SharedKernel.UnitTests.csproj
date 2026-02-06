@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\Ardalis.SharedKernel\Ardalis.SharedKernel.csproj" />
+    <ProjectReference Include="..\..\src\MartiX.SharedKernel\MartiX.SharedKernel.csproj" />
   </ItemGroup>
 
 </Project>

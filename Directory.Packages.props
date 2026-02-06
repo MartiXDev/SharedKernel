@@ -1,7 +1,7 @@
 <Project>
   <ItemGroup>
-    <PackageVersion Include="Ardalis.GuardClauses" Version="5.0.0" />
-    <PackageVersion Include="Ardalis.Specification" Version="9.3.1" />
+    <PackageVersion Include="MartiX.GuardClauses" Version="5.0.0" />
+    <PackageVersion Include="MartiX.Specification" Version="9.3.1" />
     <PackageVersion Include="coverlet.collector" Version="6.0.4" />
     <PackageVersion Include="AwesomeAssertions" Version="9.3.0" />
     <PackageVersion Include="Mediator.Abstractions" Version="3.0.1" />

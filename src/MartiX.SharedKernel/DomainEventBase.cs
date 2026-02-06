@@ -1,4 +1,4 @@
-﻿namespace Ardalis.SharedKernel;
+﻿namespace MartiX.SharedKernel;
 
 /// <summary>
 /// A base type for domain events. Depends on Mediator INotification.

@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
 using Xunit;
 
-namespace Ardalis.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
+namespace MartiX.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
 
 public class DispatchAndClearEventsWithMixedIds : IDomainEventHandler<DispatchAndClearEventsWithMixedIds.TestDomainEvent>
 {

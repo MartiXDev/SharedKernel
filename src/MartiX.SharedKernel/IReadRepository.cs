@@ -1,9 +1,9 @@
-﻿using Ardalis.Specification;
+﻿using MartiX.Specification;
 
-namespace Ardalis.SharedKernel;
+namespace MartiX.SharedKernel;
 
 /// <summary>
-/// An abstraction for read only persistence operations, based on Ardalis.Specification.
+/// An abstraction for read only persistence operations, based on MartiX.Specification.
 /// Use this primarily to fetch trackable domain entities, not for custom queries.
 /// </summary>
 /// <typeparam name="T"></typeparam>

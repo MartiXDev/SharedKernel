@@ -1,13 +1,14 @@
 ﻿using Mediator;
 using Microsoft.Extensions.Logging.Abstractions;
 using Moq;
+using Xunit;
 
-namespace Ardalis.SharedKernel.UnitTests.MediatorDomainEventDispatcherTests;
+namespace MartiX.SharedKernel.UnitTests.MediatRDomainEventDispatcherTests;
 
-public class DispatchAndClearEvents : IDomainEventHandler<DispatchAndClearEvents.TestDomainEvent>
+public class DispatchAndClearEventsWithGuidId : IDomainEventHandler<DispatchAndClearEventsWithGuidId.TestDomainEvent>
 {
   public class TestDomainEvent : DomainEventBase { }
-  private class TestEntity : EntityBase
+  private class TestEntity : EntityBase<Guid>
   {
     public void AddTestDomainEvent()
     {
@@ -26,14 +27,14 @@ public class DispatchAndClearEvents : IDomainEventHandler<DispatchAndClearEvents
     entity.AddTestDomainEvent();
 
     // Act
-    await domainEventDispatcher.DispatchAndClearEvents(new List<EntityBase> { entity });
+    await domainEventDispatcher.DispatchAndClearEvents(new List<EntityBase<Guid>> { entity });
 
     // Assert
     mediatorMock.Verify(m => m.Publish(It.IsAny<IDomainEvent>(), It.IsAny<CancellationToken>()), Times.Once);
     entity.DomainEvents.Should().BeEmpty();
   }
 
-  public ValueTask Handle(TestDomainEvent notification, CancellationToken cancellationToken)
+  public ValueTask Handle(DispatchAndClearEventsWithGuidId.TestDomainEvent notification, CancellationToken cancellationToken)
   {
     throw new NotImplementedException();
   }

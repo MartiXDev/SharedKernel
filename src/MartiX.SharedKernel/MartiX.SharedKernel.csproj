@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>MartiX.SharedKernel</AssemblyName>
+    <PackageId>MartiX.SharedKernel</PackageId>
+    <Title>MartiX.SharedKernel</Title>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Steve Smith (@ardalis)</Authors>
+    <Company>Ardalis.com</Company>
+    <Description>An example shared kernel project/package for use with Ardalis.CleanArchitecture
+      template. You should probably replace this with your own package!</Description>
+    <Summary>An example shared kernel project/package for use with Ardalis.CleanArchitecture
+      template</Summary>
+    <PackageProjectUrl>https://github.com/ardalis/MartiX.SharedKernel</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ardalis/MartiX.SharedKernel</RepositoryUrl>
+    <PackageTags>DDD;Shared Kernel;SharedKernel;Domain-Driven
+      Design;Repository;Specification;ValueObject;Value Object;Ardalis;Clean;Clean
+      Architecture;Clean Architecture Template</PackageTags>
+    <PackageIcon>icon.png</PackageIcon>
+    <Version>5.0.0</Version>
+    <PackageReleaseNotes>
+      * Updated to net10
+      * Updated dependencies
+    </PackageReleaseNotes>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>
+      $(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <DocumentationFile>bin\$(Configuration)\MartiX.SharedKernel.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MartiX.GuardClauses" />
+    <PackageReference Include="MartiX.Specification" />
+    <PackageReference Include="Mediator.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NoWarn>1701;1702;1591;1573;1712</NoWarn>
+  </PropertyGroup>
+
+
+</Project>

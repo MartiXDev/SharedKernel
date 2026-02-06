@@ -6,7 +6,7 @@ on:
     types: [published]
 
 env:
-  SOLUTION_FILE: Ardalis.SharedKernel.slnx
+  SOLUTION_FILE: MartiX.SharedKernel.slnx
   PACK_OUTPUT: artifacts/package/release
 
 jobs:

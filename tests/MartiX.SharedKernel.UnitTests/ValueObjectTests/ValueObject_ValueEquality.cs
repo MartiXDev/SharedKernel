@@ -1,4 +1,4 @@
-﻿namespace Ardalis.SharedKernel.UnitTests.ValueObjectTests;
+﻿namespace MartiX.SharedKernel.UnitTests.ValueObjectTests;
 
 public class ValueObject_ValueEquality
 {

@@ -1,4 +1,4 @@
-﻿namespace Ardalis.SharedKernel;
+﻿namespace MartiX.SharedKernel;
 
 public interface IHasDomainEvents
 {

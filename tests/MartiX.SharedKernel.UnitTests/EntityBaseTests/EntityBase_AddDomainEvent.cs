@@ -1,6 +1,6 @@
 ﻿using Mediator;
 
-namespace Ardalis.SharedKernel.UnitTests.EntityBaseTests;
+namespace MartiX.SharedKernel.UnitTests.EntityBaseTests;
 
 public class EntityBase_AddDomainEvent : INotificationHandler<EntityBase_AddDomainEvent.TestDomainEvent>
 {
